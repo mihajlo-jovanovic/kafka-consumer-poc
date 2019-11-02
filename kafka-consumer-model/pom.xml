@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.linus18</groupId>
+    <artifactId>kafka-consumer-poc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>kafka-consumer-model</artifactId>
+
+  <properties>
+    <swagger-annotations-version>1.5.22</swagger-annotations-version>
+    <jackson-version>2.9.10</jackson-version>
+    <jackson-databind-version>2.9.10</jackson-databind-version>
+    <jackson-databind-nullable-version>0.2.0</jackson-databind-nullable-version>
+    <jackson-threetenbp-version>2.9.10</jackson-threetenbp-version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>4.2.0</version>
+        <groupId>org.openapitools</groupId>
+        <executions>
+          <execution>
+            <configuration>
+              <modelPackage>io.linus18.model</modelPackage>
+              <apiPackage>io.linus18.api</apiPackage>
+              <inputSpec>${project.basedir}/src/main/resources/order-api.yaml</inputSpec>
+              <generatorName>java</generatorName>
+              <invokerPackage>io.linus18.client</invokerPackage>
+              <generateApiTests>false</generateApiTests>
+              <generateModelTests>false</generateModelTests>
+              <generateApiDocumentation>true</generateApiDocumentation>
+              <generateModelDocumentation>true</generateModelDocumentation>
+              <library>resttemplate</library>
+              <output>generated</output>
+              <groupId>io.linus18</groupId>
+              <artifactId>kafka-consumer-model</artifactId>
+            </configuration>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>${swagger-annotations-version}</version>
+    </dependency>
+    <!-- @Nullable annotation -->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+    <!-- JSON processing: jackson -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson-databind-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>${jackson-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>${jackson-databind-nullable-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.joschi.jackson</groupId>
+      <artifactId>jackson-datatype-threetenbp</artifactId>
+      <version>${jackson-threetenbp-version}</version>
+    </dependency>
+  </dependencies>
+</project>
