@@ -14,6 +14,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>kafka-consumer-model</module>
+    <module>kafka-consumer-service</module>
   </modules>
   <name>kafka-consumer-poc</name>
 
@@ -24,6 +25,22 @@
     <revision>1.0</revision>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.linus18</groupId>
+        <artifactId>kafka-consumer-model</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -32,7 +49,11 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
