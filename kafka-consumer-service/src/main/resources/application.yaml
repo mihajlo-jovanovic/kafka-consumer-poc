@@ -1,0 +1,4 @@
+io:
+  linus18:
+    consumer:
+      url: "http://localhost:9999"

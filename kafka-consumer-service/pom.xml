@@ -11,7 +11,22 @@
 
   <artifactId>kafka-consumer-service</artifactId>
 
+  <properties>
+    <jackson.version>2.10.0</jackson.version>
+    <spring.kafka.version>2.2.11.RELEASE</spring.kafka.version>
+    <spring.contract.version>2.0.4.RELEASE</spring.contract.version>
+  </properties>
+
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+      <version>${spring.kafka.version}</version>
+    </dependency>
     <dependency>
       <groupId>io.linus18</groupId>
       <artifactId>kafka-consumer-model</artifactId>
@@ -19,7 +34,7 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
-      <version>2.0.4.RELEASE</version>
+      <version>${spring.contract.version}</version>
       <scope>test</scope>
     </dependency>
 
